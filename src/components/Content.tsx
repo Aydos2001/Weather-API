@@ -1,3 +1,4 @@
+import { TbZoomQuestion } from "react-icons/tb"; 
 import { CgSpinner } from "react-icons/cg"; 
 import { BsFillCloudHaze2Fill } from "react-icons/bs"
 import { FaCompass, FaLongArrowAltDown, FaLongArrowAltUp } from "react-icons/fa"
@@ -16,13 +17,14 @@ const Content = (props: ContentProps) => {
         <>
             {
                 props.isLoading ?
-                    <div className="p-[15px] h-[300px] flex justify-center items-center rounded-md bg-white mt-6 flex flex-col gap-6">
+                    <div className="p-[15px] h-[300px] flex justify-center items-center rounded-md bg-white mt-6  flex-col gap-6">
                         <div className="text-[40px] flex justify-center items-center gap-2 text-indigo-900">
                             <CgSpinner className="animate-spin"/>
                             <span className="text-[20px]">Loading ...</span>
                         </div>
                     </div>
                     :
+                    props.wetherData? 
                     <div className="p-[15px] rounded-md bg-white mt-6 flex flex-col gap-6">
                         <h4 className="text-[20px] text-blue-500">Current weather</h4>
                         <hr />
@@ -74,7 +76,12 @@ const Content = (props: ContentProps) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
+                    :
+                    <div className="text-gray-500 p-4 text-[20px] flex justify-center items-center h-[300px] bg-white rounded-md mt-6">
+                        <TbZoomQuestion />
+                        <span className="text-[12px] w-[300px] text-center">The city you searched for is not included in the database</span>
+                    </div> 
             }
         </>
 
